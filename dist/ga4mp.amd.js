@@ -1,6 +1,6 @@
 /*!
 * 
-*   @analytics-debugger/ga4mp 0.0.5
+*   @ref/ga4mp 0.0.5
 *   https://github.com/analytics-debugger/ga4mp
 *
 *   Copyright (c) David Vallejo (https://www.thyngster.com).
@@ -167,7 +167,12 @@ define((function () { 'use strict';
     list_position: 'lp',
     list: 'ln',
     position: 'lp',
-    creative: 'cn'
+    creative: 'cn',
+    // app
+    app_name: 'an',
+    app_id: 'aid',
+    app_version: 'av',
+    app_installer_id: 'aiid'
   };
   var ecommerceEvents = ['add_payment_info', 'add_shipping_info', 'add_to_cart', 'remove_from_cart', 'view_cart', 'begin_checkout', 'select_item', 'view_item_list', 'select_promotion', 'view_promotion', 'purchase', 'refund', 'view_item', 'add_to_wishlist'];
 

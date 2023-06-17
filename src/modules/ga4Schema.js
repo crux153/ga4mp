@@ -93,6 +93,11 @@ export const ga4Schema = {
     list: 'ln',
     position: 'lp',
     creative: 'cn',
+    // app
+    app_name: 'an',
+    app_id: 'aid',
+    app_version: 'av',
+    app_installer_id: 'aiid',
 }
 
 export const ecommerceEvents = [
