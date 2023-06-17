@@ -144,11 +144,6 @@ const ga4Schema = {
     list: 'ln',
     position: 'lp',
     creative: 'cn',
-    // app
-    app_name: 'an',
-    app_id: 'aid',
-    app_version: 'av',
-    app_installer_id: 'aiid',
 };
 
 const ecommerceEvents = [
@@ -174,29 +169,6 @@ const sendRequest = (endpoint, payload, mode = 'browser', opts = {}) => {
     ).toString();
     if (mode === 'browser') {
         navigator?.sendBeacon([endpoint, qs].join('?'));
-    } else {
-        const scheme = endpoint.split('://')[0];
-        const req = require(scheme);
-        const options = {
-            headers: {
-                'User-Agent': opts.user_agent 
-            },
-            timeout: 500,
-        };        
-        const request = req
-            .get([endpoint, qs].join('?'), options, (resp) => {
-                resp.on('data', (chunk) => {
-                });
-                resp.on('end', () => {
-                    // TO-DO Handle Server Side Responses                    
-                });
-            })
-            .on('error', (err) => {
-                console.log('Error: ' + err.message);
-            });
-        request.on('timeout', () => {
-            request.destroy();
-        });
     }
 };
 
@@ -260,7 +232,7 @@ const pageDetails = () => {
     }
 };
 
-const version = '0.0.4';
+const version = '0.0.6';
 
 /**
  * Main Class Function

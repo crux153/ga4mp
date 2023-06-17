@@ -1,6 +1,6 @@
 /*!
 * 
-*   @ref/ga4mp 0.0.5
+*   @ref/ga4mp 0.0.6
 *   https://github.com/analytics-debugger/ga4mp
 *
 *   Copyright (c) David Vallejo (https://www.thyngster.com).
@@ -167,43 +167,16 @@ define((function () { 'use strict';
     list_position: 'lp',
     list: 'ln',
     position: 'lp',
-    creative: 'cn',
-    // app
-    app_name: 'an',
-    app_id: 'aid',
-    app_version: 'av',
-    app_installer_id: 'aiid'
+    creative: 'cn'
   };
   var ecommerceEvents = ['add_payment_info', 'add_shipping_info', 'add_to_cart', 'remove_from_cart', 'view_cart', 'begin_checkout', 'select_item', 'view_item_list', 'select_promotion', 'view_promotion', 'purchase', 'refund', 'view_item', 'add_to_wishlist'];
 
   var sendRequest = function sendRequest(endpoint, payload) {
     var mode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'browser';
-    var opts = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
     var qs = new URLSearchParams(JSON.parse(JSON.stringify(payload))).toString();
     if (mode === 'browser') {
       var _navigator;
       (_navigator = navigator) === null || _navigator === void 0 ? void 0 : _navigator.sendBeacon([endpoint, qs].join('?'));
-    } else {
-      var scheme = endpoint.split('://')[0];
-      var req = require(scheme);
-      var options = {
-        headers: {
-          'User-Agent': opts.user_agent
-        },
-        timeout: 500
-      };
-      var request = req.get([endpoint, qs].join('?'), options, function (resp) {
-        resp.on('data', function (chunk) {
-        });
-        resp.on('end', function () {
-          // TO-DO Handle Server Side Responses                    
-        });
-      }).on('error', function (err) {
-        console.log('Error: ' + err.message);
-      });
-      request.on('timeout', function () {
-        request.destroy();
-      });
     }
   };
 
@@ -247,7 +220,7 @@ define((function () { 'use strict';
     };
   };
 
-  var version = '0.0.4';
+  var version = '0.0.6';
 
   /**
    * Main Class Function
